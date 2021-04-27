@@ -1,12 +1,12 @@
-const contacts = [
+let contacts = [
   {
     _id: "607314fb5b9d393cffbbc1db",
     first_name: "Christian",
     last_name: "Lisangola Bondjali",
-    phone_number: "+33840964176",
+    phone_number: "+243840964176",
     email: "christian.lisangola@gmail.com",
     position: "Développeur Logiciel",
-    work_address: "Blablabla",
+    work_address: "407 rue Luluwa, Ndal-Paris",
   },
   {
     _id: "607cee57311fcb0015dd6e83",
@@ -14,7 +14,7 @@ const contacts = [
     last_name: "Dahl",
     email: "ryan.dahl@gmail.com",
     phone_number: "+33477498476",
-    position: "Software Engineer & Nodejs creator",
+    position: "Software Engineer",
     work_address: "San Francisco",
   },
   {
@@ -90,29 +90,17 @@ const contacts = [
     work_address: "Helsinki",
   },
   {
-    _id: "6084086cc404cd0015f21ea3",
-    first_name: "Britanney dd",
-    last_name: "Ramos",
-    email: "katiger@mailinator.com",
-    phone_number: "+243813153183",
-    position: "Odio ut in aliquip f",
-    work_address: "Ipsum sed dolorem m",
+    _id: "607e862bcdf2ca0015a0632b",
+    first_name: "Noel",
+    last_name: "Warner",
+    email: "kajujuv@mailinator.com",
+    phone_number: "+243816614808",
+    position: "Magnam quas consecte",
+    work_address: "Non anim saepe neque",
   },
 ];
 
-const App = () => {
-  const renderContacts = () => {
-    return contacts.map((contact) => {
-      return (
-        <tr>
-          <td>{contact.first_name}</td>
-          <td>{contact.last_name}</td>
-          <td>{contact.email}</td>
-          <td>{contact.position}</td>
-        </tr>
-      );
-    });
-  };
+const App: React.FC = () => {
   return (
     <table>
       <thead>
@@ -123,7 +111,16 @@ const App = () => {
           <th>Poste</th>
         </tr>
       </thead>
-      <tbody>{renderContacts()}</tbody>
+      <tbody>
+        {contacts.map((contact) => (
+          <tr key={contact._id}>
+            <td>{contact.first_name}</td>
+            <td>{contact.last_name}</td>
+            <td>{contact.email}</td>
+            <td>{contact.position}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
