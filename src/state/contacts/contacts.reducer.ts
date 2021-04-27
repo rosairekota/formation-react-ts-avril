@@ -3,13 +3,13 @@ import { ActionTypes } from "./contacts.type";
 import { Action } from "./contacts.actions";
 
 interface ContactsState {
-  loading: boolean;
+  isLoading: boolean;
   contacts: IContact[];
   error: string;
 }
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   contacts: [],
   error: "",
 };
@@ -17,11 +17,11 @@ const initialState = {
 const reducer = (state: ContactsState = initialState, action: Action) => {
   switch (action.type) {
     case ActionTypes.GET_CONTACTS:
-      return { ...state, loading: true };
+      return { ...state, isLoading: true };
     case ActionTypes.GET_CONTACTS_SUCCESS:
-      return { ...state, loading: false, contacts: action.payload };
+      return { ...state, isLoading: false, contacts: action.payload };
     case ActionTypes.GET_CONTACTS_ERROR:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, isLoading: false, error: action.payload };
     default:
       return state;
   }

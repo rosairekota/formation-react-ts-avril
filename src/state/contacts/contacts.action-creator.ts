@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 
 export const getContacts = () => {
   return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionTypes.GET_CONTACTS });
     try {
       const result = await contactsAPI.get("/");
       dispatch({
