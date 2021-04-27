@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { IContact } from "../interfaces/i-contact";
+import ContactsList from "./contacts-list";
 let initialState = [
   {
     _id: "607314fb5b9d393cffbbc1db",
@@ -101,16 +103,6 @@ let initialState = [
   },
 ];
 
-interface IContact {
-  _id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone_number: string;
-  position: string;
-  work_address: string;
-}
-
 const App: React.FC = () => {
   const [contacts, setContacts] = useState<IContact[]>(initialState);
   const deleteContact = (id: string) => {
@@ -120,34 +112,7 @@ const App: React.FC = () => {
 
     setContacts(newContacts);
   };
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Prénom</th>
-          <th>Nom</th>
-          <th>Email</th>
-          <th>Poste</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contacts.map((contact) => (
-          <tr key={contact._id}>
-            <td>{contact.first_name}</td>
-            <td>{contact.last_name}</td>
-            <td>{contact.email}</td>
-            <td>{contact.position}</td>
-            <td>
-              <button onClick={() => deleteContact(contact._id)}>
-                Supprimer
-              </button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+  return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
 };
 
 export default App;
