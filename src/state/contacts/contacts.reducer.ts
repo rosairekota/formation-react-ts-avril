@@ -1,5 +1,6 @@
 import { IContact } from "../../interfaces/i-contact";
 import { ActionTypes } from "./contacts.type";
+import { Action } from "./contacts.actions";
 
 interface ContactsState {
   loading: boolean;
@@ -13,7 +14,7 @@ const initialState = {
   error: "",
 };
 
-const reducer = (state: ContactsState = initialState, action: any) => {
+const reducer = (state: ContactsState = initialState, action: Action) => {
   switch (action.type) {
     case ActionTypes.GET_CONTACTS:
       return { ...state, loading: true };
