@@ -1,25 +1,15 @@
-import { useState, useEffect } from "react";
-import { IContact } from "../../../interfaces/i-contact";
+import { useEffect } from "react";
 import ContactsList from "../../../components/contacts/contacts-list/contacts-list";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { getContacts } from "../../../state/contacts/contacts.action-creator";
 
 const Index: React.FC = () => {
-  const [contacts, setContacts] = useState<IContact[]>([]);
-
+  const { contacts } = useSelector((state: any) => state.contacts);
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get("https://contacts-webservice.herokuapp.com/api/contacts")
-      .then((result) => {
-        setContacts(result.data);
-      });
+    dispatch(getContacts());
   }, []);
-  const deleteContact = (id: string) => {
-    const newContacts = contacts.filter((contact) => {
-      return contact._id !== id;
-    });
-
-    setContacts(newContacts);
-  };
+  const deleteContact = (id: string) => {};
   return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
 };
 
