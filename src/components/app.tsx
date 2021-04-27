@@ -101,6 +101,11 @@ let contacts = [
 ];
 
 const App: React.FC = () => {
+  const deleteContact = (id: any) => {
+    contacts = contacts.filter((contact) => {
+      return contact._id !== id;
+    });
+  };
   return (
     <table>
       <thead>
@@ -109,6 +114,7 @@ const App: React.FC = () => {
           <th>Nom</th>
           <th>Email</th>
           <th>Poste</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -118,6 +124,11 @@ const App: React.FC = () => {
             <td>{contact.last_name}</td>
             <td>{contact.email}</td>
             <td>{contact.position}</td>
+            <td>
+              <button onClick={() => deleteContact(contact._id)}>
+                Supprimer
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
