@@ -1,4 +1,4 @@
-import { IContact } from "../interfaces/i-contact";
+import { IContact } from "../../../interfaces/i-contact";
 interface ContactItemProps {
   contact: IContact;
   deleteContact: (id: string) => void;

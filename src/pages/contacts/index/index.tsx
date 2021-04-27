@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { IContact } from "../interfaces/i-contact";
-import ContactsList from "./contacts-list";
+import { IContact } from "../../../interfaces/i-contact";
+import ContactsList from "../../../components/contacts/contacts-list/contacts-list";
 import axios from "axios";
 
-const App: React.FC = () => {
+const Index: React.FC = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const App: React.FC = () => {
   return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
 };
 
-export default App;
+export default Index;
