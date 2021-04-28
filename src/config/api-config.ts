@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://contacts-webservice.herokuapp.com/api/contacts",
+  baseURL: process.env.REACT_APP_API_BASE_URL,
 });
