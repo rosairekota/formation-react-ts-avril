@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import ContactsList from "../../../components/contacts/contacts-list/contacts-list";
-import { useSelector, useDispatch } from "react-redux";
-import { getContacts } from "../../../state/contacts/contacts.action-creator";
+import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import { useActions } from "../../../hooks/use-actions";
 
 const Index: React.FC = () => {
-  const { contacts, isLoading } = useSelector((state: any) => state.contacts);
-  const dispatch = useDispatch();
+  const { contacts, isLoading } = useTypedSelector((state) => state.contacts);
+  const { getContacts } = useActions();
   useEffect(() => {
-    dispatch(getContacts());
+    getContacts();
   }, []);
   const deleteContact = (id: string) => {};
   return (
